@@ -11,17 +11,20 @@
 </template>
 
 <script>
-import {computed,ref} from 'vue'
+import {watch,computed,ref} from 'vue'
 export default {
 setup(){
 const search=ref('')
-const names=ref(['zeeshan','naveed','arsalan','harris'])
+const names=ref(['zeeshan','naveed','arsalan','harris','zahid','zulfiqar','nadia','armaghan'])
+watch(search,()=>{
+  console.log('watch ran')
+})
 
 const matchingNames=computed(()=>{
- return names.value.filter((name)=>{
-   name.includes(search.value)
- })
+ return names.value.filter((name)=> name.includes(search.value)
+ )
 })
+
   return {names,search, matchingNames }
 }
 }
